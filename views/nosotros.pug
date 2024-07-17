@@ -1,5 +1,28 @@
 extends ./layout/index
 
-block nosotros
-    p #{viajes} 
-    p= viajes
+block contenido
+    main.container.mt-5 
+        .row 
+            .col.md-5 
+                img(src="/img/nosotros.jpg",alt="Imagen sobre nosotros" class="img-fluid")
+            .col.md-7
+                h1  #{pagina}
+                blockquote  El mondongo, en términos culinarios, es una sopa espesa muy nutritiva que se consume especialmente en Latinoamérica y España. Esta sopa se considera un derivado de la mezcla gastronómica americana y europea. Sin embargo, hay quienes afirman que fueron los españoles quienes la dieron a conocer por toda América. Hoy día, el mondongo es preparado con las variantes culturales propias de cada región. En cualquier caso es válido acotar que los beneficios del mondongo son muchos, aunque se crea lo contrario.
+
+                p Una definición conceptual del mondongo es la referida a una parte del estómago de la ternera. Cabe destacar que en diversos países también se le da el nombre de panza. Ya sea mondongo o panza, constituye el ingrediente principal de muchas preparaciones culinarias. Su textura es gomosa, aunque luego de cocinarse bien en agua, resulta suave y agradable al paladar.
+    //- img(src="/img/cupon.jpg")
+    .listado-iconos
+        .container.mt-5.py-5.text-center    
+            .row 
+                .col-md-4 
+                    img(src="/img/icono_seguridad.svg", alt="icono seguridad", class="img-fluid mb-4")
+                    h4.mb-4 Seguridad
+                    p Si algo podemos resaltar del mondongo es la ausencia de grasa, convirtiéndose en un alimento sano y muy nutritivo. Básicamente de allí se deriva su popular uso en diversas preparaciones o recetas. 
+                .col-md-4 
+                    img(src="/img/icono_destinos.svg", alt="icono destinos",class="img-fluid mb-4")
+                    h4.mb-4 Seguridad
+                    p Si algo podemos resaltar del mondongo es la ausencia de grasa, convirtiéndose en un alimento sano y muy nutritivo. Básicamente de allí se deriva su popular uso en diversas preparaciones o recetas. 
+                .col-md-4 
+                    img(src="/img/icono_precios.svg", alt="icono precios", class="img-fluid mb-4")
+                    h4.mb-4 Seguridad
+                    p Si algo podemos resaltar del mondongo es la ausencia de grasa, convirtiéndose en un alimento sano y muy nutritivo. Básicamente de allí se deriva su popular uso en diversas preparaciones o recetas. 
