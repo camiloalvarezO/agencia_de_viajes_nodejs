@@ -6,7 +6,7 @@ const app = express();
 
 //conexión a la base de datos mysql
 db.authenticate()
-    .then(response => console.log("base de datos conectada"))
+    .then( () => console.log("base de datos conectada"))
     .catch( error => console.log("error en la conexión a la base de datos"))
     
 const port = process.env.PORT || 4000;

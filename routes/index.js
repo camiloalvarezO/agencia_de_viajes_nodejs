@@ -1,31 +1,11 @@
 import express from 'express';
-
+import {paginaInicio, paginaNosotros, paginaTestimoniales, paginaViajes} from '../controllers/paginasController.js'
 const router = express.Router();
 
-router.get('/',(req,res) => {
-    res.render('inicio',{
-        "pagina" : "Inicio"
-    })
-})
+router.get('/',paginaInicio)
 
-router.get('/viajes',(req,res) => {
-    res.render('viajes',{
-        "pagina" : "Viajes"
-    })
-})
+router.get('/viajes',paginaViajes)
 
-router.get('/testimoniales',(req,res) => {
-    res.render('testimoniales',{
-        "pagina" : "Testimoniales"
-    })
-})
-router.get('/nosotros', (req,res) =>{
-
-    const viajes = 'viaje a san juan'
-    // solo con colocar el nombre del archivo escaneará el que tenga el .pug
-    res.render('nosotros',{ // recordar que esto aqui para mandar como segundo parametro es un objeto
-        viajes,
-        "pagina": "Nosotros"
-    }) 
-})
+router.get('/testimoniales',paginaTestimoniales)
+router.get('/nosotros',paginaNosotros)
 export default router;
