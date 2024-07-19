@@ -1,4 +1,4 @@
-import {Viajes} from "../models/Viaje.js"
+import {Viaje} from "../models/Viaje.js"
 
 
 export const paginaInicio = (req,res) => {
@@ -7,13 +7,16 @@ export const paginaInicio = (req,res) => {
     })
 }
 
-export const paginaViajes = async (req,res) => {
-    const viaje = await Viajes.findAll()
-
-    console.log(viaje);
+export const paginaViajes = async (req,res,next) => {
+    const viajes = await Viaje.findAll({
+        attributes: ['id', 'titulo', 'precio', 'fecha_ida', 'fecha_vuelta', 'imagen', 'descripcion', 'disponibles', 'slug']  // Excluir 'createdAt' y 'updatedAt'
+    });
+    console.log(viajes); // todo esto vendría siendo un arreglo []
     res.render('viajes',{
-        "pagina" : "Viajes"
+        "pagina" : "Próximos Viajes",
+        viajes, // recordar que esto es un arreglo []
     })
+    return next()
 }
 export const paginaTestimoniales = (req,res) => {
     res.render('testimoniales',{
