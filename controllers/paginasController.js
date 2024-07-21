@@ -16,7 +16,7 @@ export const paginaViajes = async (req,res,next) => {
         "pagina" : "Próximos Viajes",
         viajes, // recordar que esto es un arreglo []
     })
-    return next()
+    
 }
 export const paginaTestimoniales = (req,res) => {
     res.render('testimoniales',{
@@ -30,9 +30,32 @@ export const paginaNosotros = (req,res) =>{
         "pagina": "Nosotros"
     })
 }
+export const paginaDetalleViaje= async (req,res) =>{
+
+    const {slug} = req.params // en este punto el clic va a tener el slug que viene de la bd, anteriormente
+    // rellenado para cada viaje en su card
+    //al hacer clic en el botón de más info, se usa el comodín
+    try {
+        const viaje = await Viaje.findOne({
+            where : {
+                slug: slug
+            },
+        })// encontrar donde el slug(comodin) sea "viaje-destino"
+        console.log(viaje);
+        res.render('viaje',{
+        pagina: "Información Viaje",
+        viaje
+    })
+    } catch (error) {
+        console.log(error);
+    }
+    console.log(req.params);
+}
+
 export default {
     paginaInicio,
     paginaViajes,
     paginaTestimoniales,
-    paginaNosotros
+    paginaNosotros,
+    paginaDetalleViaje
 }
