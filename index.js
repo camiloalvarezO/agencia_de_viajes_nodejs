@@ -2,7 +2,7 @@
 import express from "express";
 import router from "./routes/index.js"
 import db from "./config/db.js";
-import { guardarTestimonial } from "./controllers/testimonialController.js";
+
 const app = express();
 
 //conexión a la base de datos mysql
@@ -28,10 +28,7 @@ app.use( (req,res,next)=>{
 // agregar body parser para leer los datos de un formulario
 app.use(express.urlencoded({extended:true}))
 
-app.post('/testimoniales', (req, res, next) => {
-    console.log('Solicitud POST recibida');
-    next();
-}, guardarTestimonial);
+
 app.use(express.static('public'))
 //habilitar pug
 app.set('view engine','pug')

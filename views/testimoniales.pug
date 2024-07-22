@@ -6,18 +6,18 @@ block contenido
         .row 
 
             h2.d-block.text-center.w-100 Agrega un testimonial
-        .row.justify-content-center.col
-            .col-md-8
-                form(action="/testimoniales" method="POST")
-                    .form-group 
-                        label(for="nombre") Nombre
-                        input#nombre(type="text", placeholder="Tu nombre", name="nombre", class="form-control")
-                    .form-group  
-                        label(for="correo") Correo 
-                        input#correo(type="text", placeholder="Tu correo" name="correo", class="form-control")
-                    .form-group
-                        label(for="mensaje") Mensaje 
-                        input#mensaje(placeholder="Tu testimonio", name="mensaje", class="form-control", rows=3)
-                input.btn.btn-success.btn-block(type="submit")
+            .row.justify-content-center.col
+                .col-md-8
+                    form(action="/testimoniales" method="POST")
+                        .form-group 
+                            label(for="nombre") Nombre
+                            input#nombre(type="text", placeholder="Tu nombre", name="nombre", class="form-control")
+                        .form-group  
+                            label(for="correo") Correo 
+                            input#correo(type="text", placeholder="Tu correo" name="correo", class="form-control")
+                        .form-group
+                            label(for="mensaje") Mensaje 
+                            input#mensaje(placeholder="Tu testimonio", name="mensaje", class="form-control", rows=3)
+                        input.btn.btn-success.btn-block(type="submit")
 
             
