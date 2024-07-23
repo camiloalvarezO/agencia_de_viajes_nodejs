@@ -15,6 +15,21 @@ export const guardarTestimonial = (req,res) =>{
         errores.push({mensaje:"El mensaje no puede ir vacío"})
     }
 
+    if(errores.length > 0){
+
+        res.render('testimoniales',{
+            pagina :"Testimoniales",
+            errores,
+            correo,
+            nombre,
+            mensaje
+        })
+
+    }
+    else {
+        // Almacenar a la base de datos
+        
+    }
 }
 
 export default{
