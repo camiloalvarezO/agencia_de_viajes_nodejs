@@ -1,5 +1,7 @@
+import { Testimonial } from "../models/Testimoniales.js";
 
-export const guardarTestimonial = (req,res) =>{
+
+export const guardarTestimonial = async(req,res) =>{
     
     const {nombre,correo,mensaje} = req.body
 
@@ -28,7 +30,18 @@ export const guardarTestimonial = (req,res) =>{
     }
     else {
         // Almacenar a la base de datos
-        
+        try {
+            await Testimonial.create({
+                attributes:
+                id,
+                nombre,
+                correo,
+                mensaje
+            })
+            
+        } catch (error) {
+            
+        }
     }
 }
 
