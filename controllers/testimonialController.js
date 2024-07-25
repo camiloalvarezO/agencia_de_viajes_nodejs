@@ -6,7 +6,7 @@ export const guardarTestimonial = async(req,res) =>{
     const {nombre,correo,mensaje} = req.body
 
     const errores = [];
-
+    console.log("Received data:", { nombre, correo, mensaje });
     if(nombre.trim() === ""){
         errores.push({mensaje: "El nombre no puede ir vacío"})
     }
@@ -18,7 +18,7 @@ export const guardarTestimonial = async(req,res) =>{
     }
 
     if(errores.length > 0){
-
+        console.log("Validation errors:", errores);
         res.render('testimoniales',{
             pagina :"Testimoniales",
             errores,
@@ -31,16 +31,23 @@ export const guardarTestimonial = async(req,res) =>{
     else {
         // Almacenar a la base de datos
         try {
+            console.log("Attempting to save testimonial");
             await Testimonial.create({
-                attributes:
-                id,
                 nombre,
                 correo,
                 mensaje
             })
-            
+            console.log("Testimonial saved successfully");
+            res.redirect('/testimoniales');
         } catch (error) {
-            
+            console.error("Error saving testimonial:", error);
+            res.render('testimoniales', {
+                pagina: "Testimoniales",
+                errores: [{ mensaje: "Hubo un error al guardar el testimonio. Inténtalo de nuevo." }],
+                correo,
+                nombre,
+                mensaje
+            });
         }
     }
 }

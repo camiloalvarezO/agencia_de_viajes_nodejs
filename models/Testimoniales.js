@@ -11,14 +11,10 @@ export const Testimonial = db.define('testimonios', {
     },
     mensaje: {
         type: Sequelize.TEXT
-    }, 
-    createdAt:{
-        type: Sequelize.TEXT
     },
-    updateAt:{
-        type: Sequelize.TEXT
-    },
-    timestamps: false // Desactiva los timestamps
+    timestamps: false, // Desactiva los timestamps
+    createdAt: false,  // Evita la creación de createdAt
+    updatedAt: false   // Evita la creación de updatedAt
 });
 
 export default Testimonial;
