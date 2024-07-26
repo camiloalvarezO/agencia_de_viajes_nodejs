@@ -1,7 +1,31 @@
 extends ./layout/index
 
+block slider 
+    .slider 
+        h1 Rio de janeiro 
+        em aventura
+
 block contenido
     main.container.mt-5 
-        .row 
-            h1  #{pagina}
-    //- img(src="/img/cupon.jpg")
+        h1.text-center.mb-5  Sobre Nosotros
+        .row.mb-5
+            .col-md-5
+                p Si algo podemos resaltar del mondongo es la ausencia de grasa, convirtiéndose en un alimento sano y muy nutritivo. Básicamente de allí se deriva su popular uso en diversas preparaciones o recetas. Si algo podemos resaltar del mondongo es la ausencia de grasa, convirtiéndose en un alimento sano y muy nutritivo. Básicamente de allí se deriva su popular uso en diversas preparaciones o recetas. Si algo podemos resaltar del mondongo es la ausencia de grasa, convirtiéndose en un alimento sano y muy nutritivo. Básicamente de allí se deriva su popular uso en diversas preparaciones o recetas. 
+            .col-md-5 
+                img(src="img/inicio_nosotros.jpg" alt="sobre nosotros" class="img-fluid")
+        include ./layout/bloque_viajes
+       
+    .descuento
+        .container 
+            .row 
+                .col-md-6 
+                    .contenido 
+                        h3 5% de descuento 
+                        p.titulo Viaje a canadá
+                        p.fecha 20 de agosto de 2024 - 28 de agosto de 2024
+                        p.precio $2,500 USD
+    //- img(src="/img/cupon.jpg") 
+    .row.testimoniales
+        .container 
+            h2.mt-5.text-center Testimoniales 
+                include ./layout/bloque_testimoniales

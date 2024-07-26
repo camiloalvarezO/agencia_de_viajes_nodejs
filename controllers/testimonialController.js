@@ -17,6 +17,13 @@ export const guardarTestimonial = async(req,res) =>{
         errores.push({mensaje:"El mensaje no puede ir vacío"})
     }
 
+    // tengo que pasarle los testimoniales existentes a la vista renderizada ya que al crear el programa
+    // no se contempla que hay que pasar los testimoniales aqui para mostrarlos en la vista
+    // sino sale undefined
+    // leer los testimoniales para luego mandarlos a la vista
+    const testimoniales = await Testimonial.findAll({
+        attributes: ["id","nombre","correo","mensaje"]
+    })
     if(errores.length > 0){
         console.log("Validation errors:", errores);
         res.render('testimoniales',{
@@ -24,7 +31,8 @@ export const guardarTestimonial = async(req,res) =>{
             errores,
             correo,
             nombre,
-            mensaje
+            mensaje,
+            testimoniales
         })
 
     }

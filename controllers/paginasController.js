@@ -1,10 +1,30 @@
+import Testimonial from "../models/Testimoniales.js";
 import {Viaje} from "../models/Viaje.js"
 
 
-export const paginaInicio = (req,res) => {
-    res.render('inicio',{
-        "pagina" : "Inicio"
-    })
+export const paginaInicio = async(req,res) => {
+
+    const promiseDB = [];
+
+    promiseDB.push(Viaje.findAll({ limit : 3}))
+    promiseDB.push(Testimonial.findAll({limit:3}))
+    try {
+        const resultado = await Promise.all(promiseDB)
+        // const viajes = await Viaje.findAll({ limit : 3})
+        // const testimoniales = await Testimonial.findAll({limit:3})
+        console.log(resultado);
+        console.log(resultado[0]);
+        console.log(resultado[1]);
+        res.render('inicio',{
+            "pagina" : "Inicio",
+            "clase" : "home",
+            viajes: resultado[0],
+            testimoniales: resultado[1]
+        })
+    } catch (error) {
+        console.log("error encontrando los 3 registros en la base de datos");
+        console.log(error);
+    }
 }
 
 export const paginaViajes = async (req,res,next) => {
@@ -18,10 +38,20 @@ export const paginaViajes = async (req,res,next) => {
     })
     
 }
-export const paginaTestimoniales = (req,res) => {
-    res.render('testimoniales',{
-        "pagina" : "Testimoniales"
-    })
+export const paginaTestimoniales = async(req,res) => {
+
+    try {
+        const testimoniales = await Testimonial.findAll({
+            attributes: ["id","nombre","correo","mensaje"]
+        })
+        console.log(testimoniales);
+        res.render('testimoniales',{
+            "pagina" : "Testimoniales",
+            testimoniales
+        })
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 
